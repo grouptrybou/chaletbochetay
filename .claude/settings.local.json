@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:chaletbochetay.be)",
+      "PowerShell(Get-ChildItem \"c:\\\\Users\\\\ThiboTreve\\\\Group Trybou\\\\Trybou - Documenten\\\\Data\\\\1. Administratie\\\\6. Marketing\\\\Elanté\\\\Chalet bochetay\\\\_github\" -Recurse | Select-Object FullName | ForEach-Object { $_.FullName.Replace\\(\"c:\\\\Users\\\\ThiboTreve\\\\Group Trybou\\\\Trybou - Documenten\\\\Data\\\\1. Administratie\\\\6. Marketing\\\\Elanté\\\\Chalet bochetay\\\\_github\\\\\", \"\"\\) })"
+    ]
+  }
+}
