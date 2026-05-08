@@ -1,0 +1,346 @@
+﻿<!DOCTYPE html>
+<html lang="fr" id="html-root">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Offres Spéciales – Chalet Bochetay</title>
+  <link rel="icon" type="image/svg+xml" href="logo2 inv-01.svg">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { font-family: 'Poppins', sans-serif; background: linear-gradient(rgb(69,88,68) 0%, rgb(0,36,3) 100%); min-height: 100vh; color: #fff; display: flex; flex-direction: column; }
+    .lang-content { display: none; }
+    body.lang-nl .nl { display: block; }
+    body.lang-fr .fr { display: block; }
+    body.lang-nl .nl-inline { display: inline; }
+    body.lang-fr .fr-inline { display: inline; }
+    .nl-inline, .fr-inline { display: none; }
+
+    header { flex-shrink: 0; z-index: 1000; background: rgba(38,60,38,.97); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid rgba(255,255,255,.09); box-shadow: 0 2px 20px rgba(0,0,0,.32); display: flex; align-items: center; justify-content: space-between; padding: 0 5%; height: 72px; }
+    .logo img { height: 54px; width: auto; }
+    nav.main-nav { display: flex; align-items: center; gap: 32px; }
+    nav.main-nav a { color: #fff; text-decoration: none; font-size: 15px; font-weight: 500; transition: opacity .2s; }
+    nav.main-nav a:hover { opacity: .75; }
+    .lang-toggle { display: flex; gap: 6px; }
+    .lang-btn { background: rgba(255,255,255,.12); color: #fff; border: 1px solid rgba(255,255,255,.3); padding: 5px 13px; border-radius: 20px; font-size: 13px; font-weight: 600; cursor: pointer; font-family: inherit; transition: background .2s; }
+    .lang-btn.active, .lang-btn:hover { background: rgba(255,255,255,.3); }
+
+    main { flex: 1; display: flex; flex-direction: column; overflow: hidden; min-height: 0; }
+
+    .page-head { flex-shrink: 0; padding: 28px 8% 22px; text-align: center; }
+    .page-head h1 { font-size: clamp(22px, 2.4vw, 32px); font-weight: 700; color: #fff; }
+
+    .offers-grid { display: grid; grid-template-columns: 1fr; gap: 14px; padding: 0 20%; }
+
+    .offer-card { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15); border-radius: 14px; overflow: hidden; display: flex; flex-direction: row; backdrop-filter: blur(6px); transition: transform .2s, box-shadow .2s; min-height: 0; }
+    .offer-card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,.35); }
+
+    .offer-img { width: 28%; flex-shrink: 0; object-fit: cover; display: block; }
+
+    .offer-body { flex: 1; padding: 24px 36px; display: flex; flex-direction: column; gap: 8px; overflow: hidden; justify-content: center; }
+
+    .offer-name { font-size: 22px; font-weight: 800; line-height: 1.2; color: #fff; }
+
+    .offer-price { font-size: 22px; font-weight: 800; color: #ffd68f; }
+
+    .offer-desc { font-size: 13px; line-height: 1.5; color: rgba(255,255,255,.82); }
+
+    .offer-variants { display: flex; flex-wrap: wrap; gap: 4px; }
+    .variant-tag { background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.2); border-radius: 999px; padding: 2px 10px; font-size: 12px; font-weight: 500; color: rgba(255,255,255,.9); }
+
+    .btn-wrap { flex-shrink: 0; text-align: center; padding: 22px 0 26px; }
+    .btn-home { display: inline-flex; align-items: center; justify-content: center; padding: 8px 22px; border-radius: 999px; background: rgb(156,100,0); color: #fff; text-decoration: none; font-weight: 600; font-size: 13px; transition: background .2s; }
+    .btn-home:hover { background: rgb(128,82,0); }
+
+    footer { background: rgb(60,74,61); padding: 40px 8% 24px; margin-top: auto; }
+    .footer-inner { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 40px; margin-bottom: 24px; }
+    .footer-brand img { height: 60px; }
+    .footer-brand p, .footer-brand a { color: rgba(255,255,255,.75); font-size: 13px; margin-top: 7px; text-decoration: none; display: block; }
+    .footer-brand a:hover { color: #fff; }
+    .footer-type { font-size: 11px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: #ffd68f; margin-top: 8px; margin-bottom: 2px; }
+    .footer-hours h4 { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #ffd68f; margin-bottom: 8px; }
+    .footer-hours table { border-collapse: collapse; }
+    .footer-hours td { font-size: 13px; color: rgba(255,255,255,.8); padding: 2px 0; }
+    .footer-hours td:first-child { padding-right: 20px; font-weight: 600; color: #fff; }
+    .footer-hours .closed { color: rgba(255,255,255,.4); }
+    .footer-nav { display: flex; flex-direction: column; gap: 8px; }
+    .footer-nav h4 { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #ffd68f; margin-bottom: 2px; }
+    .footer-nav a { color: rgba(255,255,255,.75); text-decoration: none; font-size: 13px; }
+    .footer-nav a:hover { color: #fff; }
+    .footer-closed-list { list-style: none; margin-top: 4px; }
+    .footer-closed-list li { font-size: 13px; color: rgba(255,255,255,.75); padding: 2px 0; }
+    .footer-closed-list li::before { content: '✕ '; color: #ff9f9f; font-size: 11px; }
+    .footer-copy { border-top: 1px solid rgba(255,255,255,.12); padding-top: 16px; font-size: 12px; color: rgba(255,255,255,.4); }
+
+    .nav-toggle { display: none; background: none; border: none; color: #fff; font-size: 26px; cursor: pointer; padding: 4px 8px; line-height: 1; }
+    .mobile-reserve { display: none; }
+    @media (max-width: 768px) {
+      header { padding: 0 20px; height: 60px; }
+      .logo img { height: 42px; }
+      .nav-toggle { display: block; }
+      nav.main-nav {
+        display: none; flex-direction: column; gap: 18px;
+        position: fixed; top: 60px; left: 0; right: 0;
+        background: rgb(40,62,40); padding: 22px 24px 28px;
+        z-index: 998; border-top: 1px solid rgba(255,255,255,.1);
+        box-shadow: 0 8px 24px rgba(0,0,0,.4);
+      }
+      nav.main-nav.open { display: flex; }
+      nav.main-nav a { font-size: 17px; }
+      .lang-toggle { margin-top: 4px; }
+      .page-head { padding: 12px 20px; }
+      .offers-grid { grid-template-columns: 1fr; padding: 0 16px 20px; gap: 16px; }
+      .offer-card { flex-direction: column; }
+      .offer-img { width: 100%; aspect-ratio: 4/3; height: auto; }
+      .offer-body { padding: 16px 18px; text-align: left !important; }
+      .footer-inner { flex-direction: column; }
+      .footer-hours td { font-size: 11px; }
+      .footer-hours td:first-child { padding-right: 10px; }
+      body { padding-bottom: 64px; }
+      .mobile-reserve {
+        display: flex; align-items: center; justify-content: center;
+        position: fixed; bottom: 0; left: 0; right: 0; z-index: 1000;
+        background: rgb(156,100,0); padding: 14px 20px;
+        box-shadow: 0 -2px 12px rgba(0,0,0,.3);
+      }
+      .mobile-reserve a { color: #fff; text-decoration: none; font-weight: 700; font-size: 16px; font-family: 'Poppins', sans-serif; }
+    }
+      .credit-bar { background: rgb(20,35,20); padding: 10px 8%; display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 13px; color: rgba(255,255,255,.4); }
+    .credit-bar a { color: rgba(255,255,255,.5); text-decoration: none; transition: color .2s; }
+    .credit-bar a:hover { color: #fff; }
+    .food-btn { background: none; border: none; cursor: pointer; font-size: 22px; line-height: 1; padding: 0 4px; transition: transform .15s; }
+    .food-btn:hover { transform: scale(1.3); }
+    .food-btn.pop { animation: foodpop .35s ease; }
+    @keyframes foodpop { 0%{transform:scale(1)} 50%{transform:scale(1.7) rotate(15deg)} 100%{transform:scale(1)} }
+  
+    nav.main-nav a.nav-active { border-bottom: 2px solid rgba(255,255,255,.65); padding-bottom: 3px; opacity: 1; }
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity .65s ease, transform .65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+  
+    nav.main-nav a { position: relative; }
+    nav.main-nav a::after { content: ''; position: absolute; bottom: -5px; left: 0; right: 0; height: 1.5px; background: rgba(255,255,255,.7); transform: scaleX(0); transform-origin: left; transition: transform .25s ease; }
+    nav.main-nav a:hover::after, nav.main-nav a.nav-active::after { transform: scaleX(1); }
+    nav.main-nav a.nav-active { border-bottom: none !important; padding-bottom: 0 !important; opacity: 1; }
+    .lang-btn.active { background: rgba(255,255,255,.88) !important; color: rgb(35,58,35) !important; border-color: transparent !important; }
+    .btn-reserve { box-shadow: 0 2px 14px rgba(156,100,0,.35); transition: background .2s, box-shadow .2s, transform .15s !important; letter-spacing: .02em; }
+    .btn-reserve:hover { transform: translateY(-1px); box-shadow: 0 5px 22px rgba(156,100,0,.55) !important; }
+    .nav-reserve { display: inline-flex; align-items: center; padding: 7px 18px; border-radius: 999px; background: rgb(156,100,0); color: #fff !important; text-decoration: none; font-weight: 600; font-size: 13px; transition: background .2s, transform .15s; white-space: nowrap; box-shadow: 0 2px 10px rgba(156,100,0,.35); }
+    .nav-reserve:hover { background: rgb(128,82,0) !important; transform: translateY(-1px); opacity: 1 !important; box-shadow: 0 4px 18px rgba(156,100,0,.55) !important; }
+    .nav-reserve::after { display: none !important; }
+    @media (max-width: 768px) { .nav-reserve { display: none !important; } }
+  </style>
+</head>
+<body class="lang-fr" id="page-body">
+<header>
+  <a href="index.html" class="logo">
+    <img src="logo2 inv-01.svg" alt="Chalet Bochetay logo">
+  </a>
+  <button class="nav-toggle" id="nav-toggle" aria-label="Menu">&#9776;</button>
+  <nav class="main-nav" id="main-nav">
+    <a href="index.html"><span class="nl-inline">Home</span><span class="fr-inline">Accueil</span></a>
+    <a href="menu.html">Menu</a>
+    <a href="offres.html"><span class="nl-inline">Speciale aanbiedingen</span><span class="fr-inline">Offres Spéciales</span></a>
+    <a href="evenements.html"><span class="nl-inline">Evenementen</span><span class="fr-inline">Événements</span></a>
+    <a href="https://bookings.zenchef.com/results?rid=381630" class="nav-reserve" target="_blank"><span class="nl-inline">Reserveer</span><span class="fr-inline">R&eacute;server</span></a>
+    <div class="lang-toggle">
+      <button class="lang-btn" id="btn-nl" onclick="setLang('nl')">NL</button>
+      <button class="lang-btn active" id="btn-fr" onclick="setLang('fr')">FR</button>
+    </div>
+  </nav>
+</header>
+
+<div class="mobile-reserve">
+  <a href="https://bookings.zenchef.com/results?rid=381630" target="_blank">
+    &#127860;&nbsp;<span class="nl-inline">Reserveer een tafel</span><span class="fr-inline">R&eacute;server une table</span>
+  </a>
+</div>
+<main>
+  <section class="page-head">
+    <h1 class="nl lang-content">Elke week opnieuw, wat mag u niet missen?</h1>
+    <h1 class="fr lang-content">Chaque semaine, ce qu'il ne faut surtout pas manquer.</h1>
+  </section>
+
+  <div class="offers-grid">
+
+    <!-- Zondag / Dimanche -->
+    <div class="offer-card">
+      <img src="Mosselen.jpg" alt="Mosselen" class="offer-img">
+      <div class="offer-body">
+        <div class="offer-name nl lang-content">Zondag: mosselen à volonté</div>
+        <div class="offer-name fr lang-content">Le dimanche, moules à volonté !</div>
+        <div class="offer-price">29,50 €</div>
+        <p class="offer-desc nl lang-content">Geniet onbeperkt van onze heerlijke mosselen, vers bereid en vol smaak. Geserveerd met knapperige frietjes en een frisse toets erbij. Kom langs en maak van zondag een moment om van te genieten.</p>
+        <p class="offer-desc fr lang-content">Profitez de nos délicieuses moules à volonté, fraîches et pleines de saveur. Servies avec des frites croustillantes et une touche de fraîcheur. Venez en profiter et faites du dimanche un moment gourmand !</p>
+        <div class="offer-variants">
+          <span class="variant-tag nl lang-content">Natuur</span>
+          <span class="variant-tag nl lang-content">Look & room</span>
+          <span class="variant-tag nl lang-content">Thai</span>
+          <span class="variant-tag fr lang-content">Nature</span>
+          <span class="variant-tag fr lang-content">Ail & crème</span>
+          <span class="variant-tag fr lang-content">Thaï</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lunch -->
+    <div class="offer-card">
+      <div class="offer-body" style="justify-content:center;">
+        <div class="offer-name nl lang-content">Dagelijks: onze lunchdeal</div>
+        <div class="offer-name fr lang-content">Chaque jour : notre formule lunch</div>
+        <div class="offer-price">26,50 €</div>
+        <p class="offer-desc nl lang-content">Soep &nbsp;·&nbsp; Hoofdgerecht &nbsp;·&nbsp; Koffie of dessert</p>
+        <p class="offer-desc fr lang-content">Soupe &nbsp;·&nbsp; Plat principal &nbsp;·&nbsp; Café ou dessert</p>
+      </div>
+    </div>
+
+    <!-- Donderdag / Jeudi -->
+    <div class="offer-card">
+      <img src="Cote a l os.jpg" alt="Côte à l'os Holstein" class="offer-img">
+      <div class="offer-body">
+        <div class="offer-name nl lang-content">Elke donderdag: côte à l'os à volonté</div>
+        <div class="offer-name fr lang-content">Le jeudi : côte à l'os à volonté</div>
+        <div class="offer-price">41,00 €</div>
+        <p class="offer-desc nl lang-content">Geniet van onze heerlijke Holstein côte à l'os voor slechts €41. Geserveerd met frisse sla, knapperige frietjes en een heerlijke warme saus. Kom proeven en maak van donderdag je nieuwe favoriete dag.</p>
+        <p class="offer-desc fr lang-content">Chaque jeudi, un moment à savourer ! Savourez notre délicieuse côte à l'os Holstein pour seulement 41 €. Servie avec une salade fraîche, des frites croustillantes et une sauce chaude savoureuse. Venez goûter et faites du jeudi votre nouveau jour préféré !</p>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="logo2 inv-01.svg" alt="Chalet Bochetay logo">
+      <p class="footer-type">Restaurant &ndash; Brasserie &ndash; Tearoom</p>
+      <p>Le Bochetay 2A, Somme-Leuze</p>
+      <a href="mailto:restaurant@lebochetay.be">restaurant@lebochetay.be</a>
+      <a href="https://www.chaletbochetay.be" target="_blank">www.chaletbochetay.be</a>
+    </div>
+    <div class="footer-hours nl lang-content">
+      <h4>Openingsuren</h4>
+      <table>
+        <tr><td>Maandag</td><td>12:00 – 14:00 &nbsp; 17:30 – 21:00</td></tr>
+        <tr><td>Dinsdag</td><td class="closed">Gesloten</td></tr>
+        <tr><td>Woensdag</td><td class="closed">Gesloten</td></tr>
+        <tr><td>Donderdag</td><td>12:00 – 14:00 &nbsp; 17:30 – 21:00</td></tr>
+        <tr><td>Vrijdag</td><td>11:00 – 21:00</td></tr>
+        <tr><td>Zaterdag</td><td>11:00 – 21:00</td></tr>
+        <tr><td>Zondag</td><td>11:00 – 21:00</td></tr>
+        <tr><td>Zomervakantie</td><td>7/7 open (11:00 – 21:00)</td></tr>
+      </table>
+      <h4 style="margin-top:14px;">Sluitingsdagen</h4>
+      <ul class="footer-closed-list">
+        <li>31 oktober</li>
+        <li>29 augustus</li>
+        <li>28 mei – 8 juni</li>
+      </ul>
+    </div>
+    <div class="footer-hours fr lang-content">
+      <h4>Heures d'ouverture</h4>
+      <table>
+        <tr><td>Lundi</td><td>12:00 – 14:00 &nbsp; 17:30 – 21:00</td></tr>
+        <tr><td>Mardi</td><td class="closed">Ferm&eacute;</td></tr>
+        <tr><td>Mercredi</td><td class="closed">Ferm&eacute;</td></tr>
+        <tr><td>Jeudi</td><td>12:00 – 14:00 &nbsp; 17:30 – 21:00</td></tr>
+        <tr><td>Vendredi</td><td>11:00 – 21:00</td></tr>
+        <tr><td>Samedi</td><td>11:00 – 21:00</td></tr>
+        <tr><td>Dimanche</td><td>11:00 – 21:00</td></tr>
+        <tr><td>Vacances d&#39;&eacute;t&eacute;</td><td>7/7 ouvert (11:00 – 21:00)</td></tr>
+      </table>
+      <h4 style="margin-top:14px;">Jours de fermeture</h4>
+      <ul class="footer-closed-list">
+        <li>31 octobre</li>
+        <li>29 août</li>
+        <li>28 mai – 8 juin</li>
+      </ul>
+    </div>
+    <nav class="footer-nav">
+      <h4>Navigation</h4>
+      <a href="index.html"><span class="nl-inline">Home</span><span class="fr-inline">Accueil</span></a>
+      <a href="menu.html">Menu</a>
+      <a href="offres.html"><span class="nl-inline">Speciale aanbiedingen</span><span class="fr-inline">Offres Sp&eacute;ciales</span></a>
+      <a href="evenements.html"><span class="nl-inline">Evenementen</span><span class="fr-inline">&Eacute;v&eacute;nements</span></a>
+      <a href="https://bookings.zenchef.com/results?rid=381630" target="_blank"><span class="nl-inline">Reserveren</span><span class="fr-inline">R&eacute;server</span></a>
+      <a href="https://g.page/r/CaI5CDWjyAwFEBM/review?utm_source=gbp&utm_medium=reviews&utm_campaign=qr" target="_blank">&#11088; Google Reviews</a>
+      <a href="https://www.facebook.com/profile.php?id=61585725126852" target="_blank">&#128444; Facebook</a>
+    </nav>
+  </div>
+  <p class="footer-copy">&copy; 2025 Chalet Bochetay · Le Bochetay 2A, Somme-Leuze</p>
+</footer>
+
+<script>
+  function setLang(lang) {
+    const body = document.getElementById('page-body');
+    body.className = 'lang-' + lang;
+    document.getElementById('html-root').lang = lang;
+    document.getElementById('btn-nl').classList.toggle('active', lang === 'nl');
+    document.getElementById('btn-fr').classList.toggle('active', lang === 'fr');
+  }
+  setLang('fr');
+  document.getElementById('nav-toggle').addEventListener('click', function() {
+    const nav = document.getElementById('main-nav');
+    const open = nav.classList.toggle('open');
+    this.textContent = open ? '✕' : '☰';
+  });
+  document.getElementById('main-nav').querySelectorAll('a').forEach(function(a) {
+    a.addEventListener('click', function() {
+      document.getElementById('main-nav').classList.remove('open');
+      document.getElementById('nav-toggle').textContent = '☰';
+    });
+  });
+</script>
+
+<div class="credit-bar">
+  <span>website by <a href="https://thibotreve.be" target="_blank">thibotreve.be</a></span>
+  <button class="food-btn" id="food-btn" title="Klik!">&#127869;&#65039;</button>
+</div>
+<script>
+(function(){
+  var f=['🍽️','🥩','🍟','🍤','🥗','🍷','🍺','🥘','🍲','🧀','🥖','🥧','🍰'];
+  var btn=document.getElementById('food-btn');
+  if(btn) btn.addEventListener('click',function(){this.textContent=f[Math.floor(Math.random()*f.length)];this.classList.remove('pop');void this.offsetWidth;this.classList.add('pop');});
+})();
+</script>
+
+<script>
+(function(){
+  var foods=['🍽️','🥩','🍟','🍤','🥗','🍷','🍺','🥘','🍲','🧀','🥖','🥧','🍰','🫕','🍜','🥐'];
+  var footer=document.querySelector('.credit-bar');
+  if(!footer) return;
+  var last=0;
+  footer.addEventListener('mousemove',function(e){
+    var now=Date.now();
+    if(now-last<110) return;
+    last=now;
+    var s=document.createElement('span');
+    s.textContent=foods[Math.floor(Math.random()*foods.length)];
+    s.style.cssText='position:fixed;left:'+e.clientX+'px;top:'+e.clientY+'px;font-size:22px;pointer-events:none;z-index:9999;opacity:1;transition:transform 1s ease,opacity 1s ease;transform:translateY(0) rotate(0deg);';
+    document.body.appendChild(s);
+    requestAnimationFrame(function(){requestAnimationFrame(function(){
+      s.style.transform='translateY(-55px) rotate('+(Math.random()*50-25)+'deg)';
+      s.style.opacity='0';
+    });});
+    setTimeout(function(){s.remove();},1150);
+  });
+})();
+</script>
+<script>
+(function(){
+  var path = window.location.pathname.split('/').pop() || 'index.html';
+  document.querySelectorAll('nav.main-nav a[href]').forEach(function(a){
+    var h = a.getAttribute('href');
+    if(h === path || (h === '#' && (path === 'index.html' || path === ''))) a.classList.add('nav-active');
+  });
+  var sels = ['.chef','.cuisine','.map-wrap','.offers-grid','.events-grid','.footer-inner'];
+  var els = document.querySelectorAll(sels.join(','));
+  if(!els.length || !window.IntersectionObserver) return;
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); } });
+  },{threshold:0.08});
+  els.forEach(function(el){ el.classList.add('reveal'); io.observe(el); });
+})();
+</script></body>
+</html>
+
+
