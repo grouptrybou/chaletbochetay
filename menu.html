@@ -141,13 +141,14 @@
 </main>
 <script>
   function setLang(lang) {
+    localStorage.setItem('lang', lang);
     const body = document.getElementById('page-body');
     body.className = 'lang-' + lang;
     document.getElementById('html-root').lang = lang;
     document.getElementById('btn-nl').classList.toggle('active', lang === 'nl');
     document.getElementById('btn-fr').classList.toggle('active', lang === 'fr');
   }
-  setLang('fr');
+  setLang(localStorage.getItem('lang') || 'fr');
   document.getElementById('menu-iframe').addEventListener('load', function() {
     var loader = document.getElementById('menu-loader');
     loader.classList.add('hidden');

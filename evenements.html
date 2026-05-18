@@ -319,13 +319,14 @@
 
 <script>
   function setLang(lang) {
+    localStorage.setItem('lang', lang);
     const body = document.getElementById('page-body');
     body.className = 'lang-' + lang;
     document.getElementById('html-root').lang = lang;
     document.getElementById('btn-nl').classList.toggle('active', lang === 'nl');
     document.getElementById('btn-fr').classList.toggle('active', lang === 'fr');
   }
-  setLang('fr');
+  setLang(localStorage.getItem('lang') || 'fr');
   document.getElementById('nav-toggle').addEventListener('click', function() {
     const nav = document.getElementById('main-nav');
     const open = nav.classList.toggle('open');
