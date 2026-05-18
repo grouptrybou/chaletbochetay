@@ -380,7 +380,7 @@
     var h = a.getAttribute('href');
     if(h === path || (h === '#' && (path === 'index.html' || path === ''))) a.classList.add('nav-active');
   });
-  var sels = ['.chef','.cuisine','.map-wrap','.offers-grid','.events-grid','.footer-inner'];
+  var sels = ['.chef','.cuisine','.map-wrap','.offers-grid','.events-grid'];
   var els = document.querySelectorAll(sels.join(','));
   if(!els.length || !window.IntersectionObserver) return;
   var io = new IntersectionObserver(function(entries){
