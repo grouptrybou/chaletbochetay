@@ -34,6 +34,8 @@
 
     .event-card { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; backdrop-filter: blur(6px); transition: transform .2s, box-shadow .2s; }
     .event-card:hover { transform: translateY(-4px); box-shadow: 0 14px 36px rgba(0,0,0,.35); }
+    .event-card.event-past { opacity: 0.38; filter: grayscale(0.75); }
+    .event-card.event-past:hover { transform: none; box-shadow: none; }
 
     .event-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; }
     .event-img-placeholder { width: 100%; aspect-ratio: 4/3; background: rgba(255,255,255,.06); display: flex; align-items: center; justify-content: center; font-size: 48px; }
@@ -181,7 +183,7 @@
   <div class="events-grid">
 
     <!-- Fête des Mères -->
-    <div class="event-card">
+    <div class="event-card" data-date="2026-05-11" data-yearly="true">
       <img src="pexels-moederdag.jpg" alt="Moederdag diner" loading="eager" fetchpriority="high" class="event-img">
       <div class="event-body">
         <span class="event-date nl lang-content">2e zondag van mei</span>
@@ -203,7 +205,7 @@
     </div>
 
     <!-- Fête des Pères -->
-    <div class="event-card">
+    <div class="event-card" data-date="2026-06-15" data-yearly="true">
       <img src="pexels-vaderdag.jpg" alt="Vaderdag steak" loading="eager" fetchpriority="high" class="event-img">
       <div class="event-body">
         <span class="event-date nl lang-content">3e zondag van juni</span>
@@ -225,7 +227,7 @@
     </div>
 
     <!-- 7 juli: Merel Forrest -->
-    <div class="event-card">
+    <div class="event-card" data-date="2026-07-07">
       <img src="merel-forrest-live-music-chalet-bochetay.jpg" alt="Merel Forrest - Live Music @ Chalet Bochetay" loading="lazy" class="event-img">
       <div class="event-body">
         <span style="display:inline-block; font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:#ffd68f; border:1px solid rgba(255,214,143,.35); border-radius:4px; padding:2px 8px; margin-bottom:6px;">&#127926; Live Music @ Chalet Bochetay</span>
@@ -245,7 +247,7 @@
     </div>
 
     <!-- 14 juli: The Embers -->
-    <div class="event-card">
+    <div class="event-card" data-date="2026-07-14">
       <img src="the-embers-live-music-chalet-bochetay.jpg" alt="The Embers - Live Music @ Chalet Bochetay" loading="lazy" class="event-img">
       <div class="event-body">
         <span style="display:inline-block; font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:#ffd68f; border:1px solid rgba(255,214,143,.35); border-radius:4px; padding:2px 8px; margin-bottom:6px;">&#127926; Live Music @ Chalet Bochetay</span>
@@ -265,7 +267,7 @@
     </div>
 
     <!-- Fête des Belges / Nationale Feestdag + The Pornkings -->
-    <div class="event-card">
+    <div class="event-card" data-date="2026-07-20">
       <img src="the-pornkings-djset-chalet-bochetay.jpg" alt="The Pornkings dj-set - Fête des Belges @ Chalet Bochetay" loading="eager" fetchpriority="high" class="event-img">
       <div class="event-body">
         <span style="display:inline-block; font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:#ffd68f; border:1px solid rgba(255,214,143,.35); border-radius:4px; padding:2px 8px; margin-bottom:6px;">&#127926; Live Music @ Chalet Bochetay</span>
@@ -285,7 +287,7 @@
     </div>
 
     <!-- 4 augustus: Maanbar -->
-    <div class="event-card">
+    <div class="event-card" data-date="2026-08-04">
       <img src="maanbar-live-music-chalet-bochetay.jpg" alt="Maanbar - Live Music @ Chalet Bochetay" loading="lazy" class="event-img">
       <div class="event-body">
         <span style="display:inline-block; font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:#ffd68f; border:1px solid rgba(255,214,143,.35); border-radius:4px; padding:2px 8px; margin-bottom:6px;">&#127926; Live Music @ Chalet Bochetay</span>
@@ -305,7 +307,7 @@
     </div>
 
     <!-- 11 augustus: ILOA -->
-    <div class="event-card">
+    <div class="event-card" data-date="2026-08-11">
       <img src="iloa-live-music-chalet-bochetay.png" alt="ILOA - Live Music @ Chalet Bochetay" loading="lazy" class="event-img">
       <div class="event-body">
         <span style="display:inline-block; font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:#ffd68f; border:1px solid rgba(255,214,143,.35); border-radius:4px; padding:2px 8px; margin-bottom:6px;">&#127926; Live Music @ Chalet Bochetay</span>
@@ -325,7 +327,7 @@
     </div>
 
     <!-- 18 augustus: Velvet Coven -->
-    <div class="event-card">
+    <div class="event-card" data-date="2026-08-18">
       <img src="velvet-coven-live-music-chalet-bochetay.jpg" alt="Velvet Coven - Live Music @ Chalet Bochetay" loading="lazy" class="event-img" style="object-position: center top;">
       <div class="event-body">
         <span style="display:inline-block; font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:#ffd68f; border:1px solid rgba(255,214,143,.35); border-radius:4px; padding:2px 8px; margin-bottom:6px;">&#127926; Live Music @ Chalet Bochetay</span>
@@ -345,7 +347,7 @@
     </div>
 
     <!-- 25 augustus: The Impulse -->
-    <div class="event-card">
+    <div class="event-card" data-date="2026-08-25">
       <img src="the-impulse-live-music-chalet-bochetay.jpg" alt="The Impulse - Live Music @ Chalet Bochetay" loading="lazy" class="event-img">
       <div class="event-body">
         <span style="display:inline-block; font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:#ffd68f; border:1px solid rgba(255,214,143,.35); border-radius:4px; padding:2px 8px; margin-bottom:6px;">&#127926; Live Music @ Chalet Bochetay</span>
@@ -456,6 +458,23 @@
       document.getElementById('nav-toggle').textContent = '☰';
     });
   });
+  (function() {
+    var today = new Date(); today.setHours(0,0,0,0);
+    var sep1 = new Date('2026-09-01');
+    document.querySelectorAll('.event-card[data-date]').forEach(function(card) {
+      var dateStr = card.dataset.date;
+      if (card.dataset.yearly) {
+        dateStr = today.getFullYear() + dateStr.substring(4);
+      }
+      var d = new Date(dateStr);
+      if (d < today) {
+        card.classList.add('event-past');
+        if (today >= sep1 && d >= new Date('2026-07-01')) {
+          card.style.display = 'none';
+        }
+      }
+    });
+  })();
 </script>
 
 <div class="credit-bar">
